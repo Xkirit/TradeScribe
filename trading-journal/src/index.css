@@ -4,3 +4,12 @@
 .opacity-50 {
   pointer-events: none; /* Prevent interactions with the content when the sidebar is open */
 }
+/* Optional: Remove any additional shadows or borders if needed */
+.shadow-none {
+  box-shadow: none;
+}
+
+/* Add this to your global CSS file */
+
+
+

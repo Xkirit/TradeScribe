@@ -20,8 +20,13 @@ module.exports = {
         },
       },
       backgroundImage: theme => ({
-        'primary-gradient': 'linear-gradient(to bottom, #F3FF90, #059212)',
+        'primary-gradient': 'linear-gradient(to bottom, #059212, #F3FF90)',
+        'navbar-gradient': 'linear-gradient(to bottom, #F3FF90, #06D001)',
+        'secondary-gradient': 'linear-gradient(to bottom, #06D001, #F3FF90)',
       }),
+      fontFamily: {
+        'playfair': ['Playfair Display', 'serif'],
+      },
     },
   },
   plugins: [],

@@ -3,7 +3,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 
 const Navbar = ({ toggleSidebar }) => {
   return (
-    <nav className="bg-primary-gradient text-white p-4 flex items-center justify-between shadow-md">
+    <nav className="bg-navbar-gradient text-green-900 p-4 flex items-center justify-between shadow-none border-none">
       <div className="flex items-center space-x-4">
         <button
           onClick={(e) => {
@@ -14,14 +14,17 @@ const Navbar = ({ toggleSidebar }) => {
         >
           <RxHamburgerMenu size={24} />
         </button>
-        <div className="text-xl font-bold">Trading Journal</div>
+        <div style={{ fontWeight: 950}} className="text-2xl font-extrabold font-playfair italic">Trading Journal</div>
       </div>
-      <div className="space-x-4">
-        <button className="bg-primary-light hover:bg-primary text-white font-bold py-2 px-4 rounded">
+      <div className="space-x-2">
+        <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
           Home
         </button>
-        <button className="bg-primary-light hover:bg-primary text-white font-bold py-2 px-4 rounded">
+        <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
           About
+        </button>
+        <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
+          Sign-in
         </button>
       </div>
     </nav>
