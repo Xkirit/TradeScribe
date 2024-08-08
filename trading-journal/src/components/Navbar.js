@@ -16,7 +16,7 @@ const Navbar = ({ toggleSidebar }) => {
         </button>
         <div style={{ fontWeight: 950}} className="text-2xl font-extrabold font-playfair italic">Trading Journal</div>
       </div>
-      <div className="space-x-2">
+      <div className="space-x-4">
         <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
           Home
         </button>

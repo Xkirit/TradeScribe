@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ isOpen }) => {
   return (
@@ -9,18 +10,21 @@ const Sidebar = ({ isOpen }) => {
       onClick={(e) => e.stopPropagation()} // Prevent clicks inside the sidebar from closing it
     >
       <nav className="mt-10">
-        <a href="#" className="block py-4 px-12  rounded transition duration-200 hover:bg-secondary-light ">
+        <Link to="/Dashboard" className="block py-4 px-12  rounded transition duration-200 hover:bg-secondary-light ">
           Dashboard
-        </a>
-        <a href="#" className="block py-5 px-12 rounded transition duration-200 hover:bg-secondary-light">
+        </Link>
+        <Link to="/Trades" className="block py-5 px-12 rounded transition duration-200 hover:bg-secondary-light">
           Trades
-        </a>
-        <a href="#" className="block py-5 px-12 rounded transition duration-200 hover:bg-secondary-light">
-          Reports
-        </a>
-        <a href="#" className="block py-5 px-12 rounded transition duration-200 hover:bg-secondary-light">
+        </Link>
+        <Link to="/Analysis" className="block py-5 px-12 rounded transition duration-200 hover:bg-secondary-light">
+          Analysis
+        </Link>
+        <Link to="/Settings" className="block py-5 px-12 rounded transition duration-200 hover:bg-secondary-light">
           Settings
-        </a>
+        </Link>
+        <Link to="/Help" className="block py-5 px-12 rounded transition duration-200 hover:bg-secondary-light">
+          Help
+        </Link>
       </nav>
     </div>
   );

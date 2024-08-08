@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-
+import useTypingEffect from '../hooks/useTypingeffect';
+import { Outlet } from 'react-router-dom';
 const Home = () => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
@@ -15,8 +16,12 @@ const Home = () => {
     }
   };
 
+  const texts = ['Journal your ', 'Track your ', 'Analyze your'];
+  const displayText = useTypingEffect(texts);
+
   return (
     <div className="relative h-screen overflow-hidden bg-secondary-gradient font-playfair  text-primary">
+      <div className='absolute inset-0 bg-noise z-0'>
       <Navbar toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={isSidebarOpen} />
       {isSidebarOpen && (
@@ -26,13 +31,18 @@ const Home = () => {
         />
       )}
       <div
-        className={`p-10 transition-opacity duration-200 ease-in-out ${
+        className={`p-7 transition-opacity duration-200 ease-in-out ${
           isSidebarOpen ? 'filter blur-sm' : ''
-        }`}
+        }z-7 flex flex-col items-center py-4 h-full`}
       >
-        <h1 className="text-3xl font-bold text-primary">Welcome to the Trading Journal</h1>
+        <h1 className="text-5xl py-2 font-bold font-playfair text-primary">
+          {displayText}
+        </h1>
+    
         <p className="mt-4 text-secondary-lightest">Track your trades, analyze your performance, and improve your strategy.</p>
       </div>
+      <Outlet />
+    </div>
     </div>
   );
 };
