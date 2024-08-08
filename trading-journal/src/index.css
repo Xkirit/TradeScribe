@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.opacity-50 {
+  pointer-events: none; /* Prevent interactions with the content when the sidebar is open */
+}
