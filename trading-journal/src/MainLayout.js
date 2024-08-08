@@ -17,7 +17,7 @@ const MainLayout = () => {
   };
   return (
     
-    <div className="relative h-screen overflow-hidden bg-secondary-gradient font-playfair  text-primary">
+    <div className="relative min-h-screen overflow-hidden bg-secondary-gradient font-playfair  text-primary">
       <Navbar toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={isSidebarOpen} />
       {isSidebarOpen && (

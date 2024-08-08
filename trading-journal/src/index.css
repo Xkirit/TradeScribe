@@ -13,6 +13,19 @@
 /* Add this to your global CSS file */
 
 
+/* Example of custom styling */
+.chart-container {
+  background-color: none;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-
-
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure the body can grow with content */ 
+}
+body {
+  overflow: auto;
+}

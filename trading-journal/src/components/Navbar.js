@@ -14,7 +14,7 @@ const Navbar = ({ toggleSidebar }) => {
         >
           <RxHamburgerMenu size={24} />
         </button>
-        <div style={{ fontWeight: 950}} className="text-2xl font-extrabold font-playfair italic">Trading Journal</div>
+        <div style={{ fontWeight: 950}} className="text-2xl font-extrabold font-playfair italic">TradeScribe</div>
       </div>
       <div className="space-x-4">
         <Link to='/'>
