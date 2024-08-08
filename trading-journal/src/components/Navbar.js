@@ -1,6 +1,6 @@
 import React from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
-
+import { Link } from 'react-router-dom';
 const Navbar = ({ toggleSidebar }) => {
   return (
     <nav className="bg-navbar-gradient text-green-900 p-4 flex items-center justify-between shadow-none border-none">
@@ -17,9 +17,11 @@ const Navbar = ({ toggleSidebar }) => {
         <div style={{ fontWeight: 950}} className="text-2xl font-extrabold font-playfair italic">Trading Journal</div>
       </div>
       <div className="space-x-4">
+        <Link to='/'>
         <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
-          Home
+          Home 
         </button>
+        </Link>
         <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
           About
         </button>

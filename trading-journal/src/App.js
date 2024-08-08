@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainLayout from './MainLayout';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Trades from './pages/Trades';
@@ -11,12 +12,13 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />}>
-        <Route path="dashboard" element={<Dashboard/>} />
-        <Route path="trades" element={<Trades/>} />
-        <Route path="analysis" element={<Analysis/>} />
-        <Route path="settings" element={<Settings/>} />
-        <Route path="help" element={<Help/>} />
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="trades" element={<Trades />} />
+          <Route path="analysis" element={<Analysis />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="help" element={<Help />} />
         </Route>
       </Routes>
     </Router>
