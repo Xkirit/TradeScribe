@@ -25,9 +25,11 @@ const Navbar = ({ toggleSidebar }) => {
         <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
           About
         </button>
+        <Link to="/signin">
         <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
           Sign-in
         </button>
+        </Link>
       </div>
     </nav>
   );

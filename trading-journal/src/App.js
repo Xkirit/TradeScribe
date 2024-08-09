@@ -7,11 +7,13 @@ import Trades from './pages/Trades';
 import Analysis from './pages/Analysis';
 import Settings from './pages/Settings';
 import Help from './pages/Help';
+import SignIn from './pages/SignIn';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/TradingJournalv2">
       <Routes>
+        <Route path="signin" element={<SignIn />} />
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="dashboard" element={<Dashboard />} />
