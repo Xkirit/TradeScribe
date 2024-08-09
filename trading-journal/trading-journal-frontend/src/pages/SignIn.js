@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   return (
-    <div className="relative flex items-center py-10 justify-center min-h-screen bg-secondary-gradient text-primary">
+    <div className="relative flex items-center py-10 justify-center min-h-screen bg-secondary-gradient text-primary font-playfair">
       
       <Link
         to="/"
