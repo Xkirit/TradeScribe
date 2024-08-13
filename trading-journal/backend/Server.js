@@ -13,6 +13,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
 // Routes
 app.use('/api/auth', authRoutes); // Auth routes
 app.use('/api/trades', tradeRoutes); // Trade routes

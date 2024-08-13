@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
       <div className='z-7 flex flex-col items-center py-4 h-full'>
-        <h1 className="text-5xl font-bold font-playfair text-primary ">
+        <h1 className="text-7xl font-bold font-playfair text-green-900 ">
           {displayText}
         </h1>
         <p className="mt-4 text-secondary-lightest">

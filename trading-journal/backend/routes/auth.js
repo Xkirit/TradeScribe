@@ -37,43 +37,26 @@ router.post('/register', async (req, res) => {
 // @access   Public
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
-
-  try {
-    // Check if user exists
-    const user = await User.findOne({ username });
-    if (!user) {
-      console.log('User not found'); // Debugging statement
-      return res.status(400).json({ msg: 'Invalid Credentials' });
-    }
-
-    // Check password
-    const isMatch = await bcrypt.compare(password,user.password);
-    if (!isMatch) {
-      console.log('Password does not match'); // Debugging statement
-      return res.status(400).json({ msg: 'Invalid Credentials' });
-    }
-    else{
-      console.log('Password Match:', isMatch);
-    }
-
-    // Return JWT token
-    const payload = { user: { id: user.id } };
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET, // Ensure this is set
-      { expiresIn: '5d' },
-      (err, token) => {
-        if (err) {
-          console.error('Error signing token:', err); // Debugging statement
-          throw err;
-        }
-        res.json({ token });
+  User.findOne({ username: username })
+    .then(user => {
+      if (user) {
+        bcrypt.compare(password, user.password, (err, response) => {
+          if (err) {
+            res.json("password is incorrect")
+          }
+          const payload = { user: { id: User.id } };
+          const token= jwt.sign(payload, process.env.JWT_SECRET, {expiresIn:"1d"})
+          res.cookie("token", token)
+          console.log(token);
+          res.json({token});
+        })
+      } else {
+        res.json("No record existed")
       }
-    );
-  } catch (err) {
-    console.error('Server error:', err); // Debugging statement
-    res.status(500).send('Server Error');
-  }
+    })
+
+ 
+  
 });
 
 module.exports = router;

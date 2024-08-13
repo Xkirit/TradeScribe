@@ -3,14 +3,16 @@ const router = express.Router();
 const Trade = require('../models/Trade');
 const auth = require('../middleware/Authh');
 
+
 // @route    POST /api/trades
 // @desc     Add a trade
 // @access   Private
 router.post('/', auth, async (req, res) => {
-  const { asset, entry, exit, quantity, pnl, date, notes } = req.body;
+  const {asset, entry, exit, quantity, pnl, date, notes} = req.body;
 
   try {
     const newTrade = new Trade({
+      user: req.user.id,
       asset,
       entry,
       exit,
@@ -18,11 +20,12 @@ router.post('/', auth, async (req, res) => {
       pnl,
       date,
       notes,
-      user: req.user.id // Associate trade with user
+      // Associate trade with user
     });
 
     const trade = await newTrade.save();
     res.json(trade);
+    console.log(req.user.id)
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -34,7 +37,11 @@ router.post('/', auth, async (req, res) => {
 // @access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    const trades = await Trade.find({ user: req.user.id }).sort({ date: -1 });
+    const userId = req.user.id;
+    const trades = await Trade.find({userId});
+    if (!trades) {
+      return res.status(404).json({ msg: 'No trades found for this user' });
+    }
     res.json(trades);
   } catch (err) {
     console.error(err.message);

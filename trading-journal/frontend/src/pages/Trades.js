@@ -18,25 +18,28 @@ const Trades = () => {
   useEffect(() => {
     const fetchTrades = async () => {
       try {
+        const token = localStorage.getItem('token'); // or wherever you store your JWT
+    
+        if (!token) {
+          throw new Error('No token found');
+        }
+    
         const response = await fetch('http://localhost:5000/api/trades', {
+          method: 'GET',
           headers: {
-            'Authorization': `Bearer ${auth.token}`
-          }
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+          },
         });
+    
         if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.msg || 'Failed to fetch trades');
+          throw new Error('Token is not valid');
         }
+    
         const data = await response.json();
-        if (Array.isArray(data)) {
-          setTrades(data);
-        } else {
-          console.error('Unexpected data format:', data);
-          setTrades([]); // Default to an empty array
-        }
-      } catch (err) {
-        console.error('Error fetching trades:', err);
-        setTrades([]); // Default to an empty array on error
+        console.log('Fetched trades:', data);
+      } catch (error) {
+        console.error('Error fetching trades:', error.message);
       }
     };
   
@@ -63,7 +66,7 @@ const Trades = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${auth.token}` // Add token to headers
         },
-        body: JSON.stringify({ ...trade, pnl }),
+        body: JSON.stringify({ ...trade, pnl}),
       });
 
       const data = await response.json();
@@ -115,7 +118,7 @@ const Trades = () => {
               name="asset"
               value={trade.asset}
               onChange={handleChange}
-              className="w-full px-3 py-1 border border-transparent rounded-lg bg-white"
+              className="w-full px-3 py-1 border border-transparent rounded-lg bg-none"
               placeholder="Enter asset"
             />
           </div>

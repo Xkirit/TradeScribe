@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
 const TradeSchema = new mongoose.Schema({
+
+  user: {
+    type: String,
+    ref: 'User',
+    require: true,
+  },
   asset: {
     type: String,
     required: true,
@@ -27,12 +33,7 @@ const TradeSchema = new mongoose.Schema({
   },
   notes: {
     type: String,
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
+  }
 });
 
 module.exports = mongoose.model('Trade', TradeSchema);
