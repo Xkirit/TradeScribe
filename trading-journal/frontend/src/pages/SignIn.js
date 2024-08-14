@@ -12,7 +12,7 @@ const SignIn = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {  // Change to login endpoint
+      const response = await fetch('https://trading-journalv2.vercel.app/api/auth/login', {  // Change to login endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
