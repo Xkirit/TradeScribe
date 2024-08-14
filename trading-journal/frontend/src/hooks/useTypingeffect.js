@@ -12,8 +12,6 @@ const useTypingEffect = (texts, typingSpeed = 100, deletingSpeed = 50, pauseTime
     const handleTyping = () => {
       const text = texts[currentIndex];
       const animatedPart = text;
-      const staticPart = ' trade.';
-
       if (isDeleting) {
         setDisplayText(animatedPart.substring(0, displayText.length - 1));
         if (displayText === '') {

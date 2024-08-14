@@ -8,7 +8,6 @@ import Analysis from './pages/Analysis';
 import Settings from './pages/Settings';
 import Help from './pages/Help';
 import SignIn from './pages/SignIn';
-import PrivateRoute from './components/PrivateRoute';
 import { AuthProvider } from './context/AuthContext';
 import SignUp from './pages/signup';
 const App = () => {
