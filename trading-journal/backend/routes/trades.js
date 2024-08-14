@@ -37,11 +37,9 @@ router.post('/', auth, async (req, res) => {
 // @access   Private
 router.get('/', auth, async (req, res) => {
   try {
-    const userId = req.user.id;
-    const trades = await Trade.find({userId});
-    if (!trades) {
-      return res.status(404).json({ msg: 'No trades found for this user' });
-    }
+    // Fetch trades where the user field matches the ID of the currently authenticated user
+    const trades = await Trade.find({ user: req.user.id });
+
     res.json(trades);
   } catch (err) {
     console.error(err.message);

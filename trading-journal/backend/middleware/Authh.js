@@ -15,9 +15,9 @@ const auth = (req, res, next) => {
   try {
     // Verify and decode the token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
+    console.log('decoded:',decoded);
     // Attach the decoded user information to the request object
-    req.user = decoded.user;
+    req.user=decoded.user;
     next();
   } catch (err) {
     console.error('Invalid token:', err.message);  // Debugging output

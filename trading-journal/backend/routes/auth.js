@@ -38,16 +38,17 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   User.findOne({ username: username })
-    .then(user => {
-      if (user) {
-        bcrypt.compare(password, user.password, (err, response) => {
+    .then(User => {
+      if (User) {
+        bcrypt.compare(password, User.password, (err, response) => {
           if (err) {
-            res.json("password is incorrect")
+            res.json("password is incorrect");
           }
           const payload = { user: { id: User.id } };
           const token= jwt.sign(payload, process.env.JWT_SECRET, {expiresIn:"1d"})
           res.cookie("token", token)
           console.log(token);
+          console.log('user:', User);
           res.json({token});
         })
       } else {

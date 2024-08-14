@@ -1,7 +1,16 @@
 import React from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+
 const Navbar = ({ toggleSidebar }) => {
+  const {auth, logout} = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout= ()=>{
+    logout();
+    navigate('/signin');
+  }
   return (
     <nav className="bg-navbar-gradient text-green-900 p-4 flex items-center justify-between shadow-none border-none">
       <div className="flex items-center space-x-4">
@@ -25,11 +34,21 @@ const Navbar = ({ toggleSidebar }) => {
         <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
           About
         </button>
-        <Link to="/signin">
-        <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
-          Sign-in
-        </button>
-        </Link>
+        {auth.token ? (
+            <button 
+              onClick={handleLogout} 
+              className=" text-primary px-4 py-2 rounded-lg"
+            >
+              Sign Out
+            </button>
+          ) : (
+            <Link 
+              to="/signin" 
+              className=" text-primary px-4 py-2 rounded-lg"
+            >
+              Sign In
+            </Link>
+          )}
       </div>
     </nav>
   );

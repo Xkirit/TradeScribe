@@ -3,7 +3,7 @@ import { TiDeleteOutline } from 'react-icons/ti';
 import { AuthContext } from '../context/AuthContext';
 
 const Trades = () => {
-  const { auth } = useContext(AuthContext); // Authentication context
+  const { auth } = useContext(AuthContext);
   const [trades, setTrades] = useState([]);
   const [trade, setTrade] = useState({
     asset: '',
@@ -18,12 +18,12 @@ const Trades = () => {
   useEffect(() => {
     const fetchTrades = async () => {
       try {
-        const token = localStorage.getItem('token'); // or wherever you store your JWT
-    
+        const token = auth.token;
+
         if (!token) {
           throw new Error('No token found');
         }
-    
+
         const response = await fetch('http://localhost:5000/api/trades', {
           method: 'GET',
           headers: {
@@ -31,18 +31,18 @@ const Trades = () => {
             'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
           },
         });
-    
+
         if (!response.ok) {
-          throw new Error('Token is not valid');
+          throw new Error('Failed to fetch trades');
         }
-    
+
         const data = await response.json();
-        console.log('Fetched trades:', data);
+        setTrades(data);
       } catch (error) {
         console.error('Error fetching trades:', error.message);
       }
     };
-  
+
     fetchTrades();
   }, [auth.token]);
 
@@ -64,10 +64,14 @@ const Trades = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${auth.token}` // Add token to headers
+          'Authorization': `Bearer ${auth.token}`
         },
-        body: JSON.stringify({ ...trade, pnl}),
+        body: JSON.stringify({ ...trade, pnl }),
       });
+
+      if (!response.ok) {
+        throw new Error('Failed to add trade');
+      }
 
       const data = await response.json();
       setTrades([...trades, data]);
@@ -84,6 +88,7 @@ const Trades = () => {
       console.error('Error adding trade:', err);
     }
   };
+
 
   const calculatePnL = (entry, exit, quantity) => {
     if (!quantity || !entry || !exit) return '';
