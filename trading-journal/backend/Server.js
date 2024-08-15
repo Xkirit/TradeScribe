@@ -13,7 +13,6 @@ const app = express();
 app.use(express.json());
 app.use(cors({
   origin: 'https://xkirit.github.io',
-  methods: 'GET,POST,PUT,DELETE',
   credentials: true,
 }));
 
