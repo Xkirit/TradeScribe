@@ -12,7 +12,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: 'https://xkirit.github.io',
+  origin: 'http://localhost:3000',
   credentials: true,
 }));
 
