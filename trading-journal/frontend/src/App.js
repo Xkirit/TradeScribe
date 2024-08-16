@@ -13,7 +13,7 @@ import SignUp from './pages/signup';
 const App = () => {
   return (
     
-      <Router basename="/TradingJournalv2">
+      <Router basename="/TradeScribe">
         <AuthProvider>
         <Routes>
           <Route path="signin" element={<SignIn />} />

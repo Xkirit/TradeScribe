@@ -17,7 +17,7 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-secondary-gradient font-playfair text-primary">
+    <div className="relative h-screen py-2 overflow-hidden bg-secondary-gradient font-playfair text-primary">
       <Sidebar isOpen={isSidebarOpen} />
       {isSidebarOpen && (
         <div
@@ -30,7 +30,7 @@ const MainLayout = () => {
           isSidebarOpen ? 'blur-sm' : ''
         }`}>
         {/* Wrap both Navbar and main content inside the blurred container */}
-        <Navbar toggleSidebar={toggleSidebar} />
+        <Navbar  toggleSidebar={toggleSidebar} />
         <div className="flex flex-col items-center py-4 min-h-screen">
           <Outlet />
         </div>
