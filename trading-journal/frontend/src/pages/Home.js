@@ -6,9 +6,9 @@ const Home = () => {
   const displayText = useTypingEffect(texts);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-none ">
+    <div className="flex flex-col items-center justify-center  min-h-screen bg-none ">
       <header className="text-center py-16">
-        <h1 className="text-7xl font-bold text-gray-800 leading-tight font-playfair">
+        <h1 className="text-6xl font-bold text-gray-800 leading-tight font-playfair">
           {displayText}
         </h1>
         <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
@@ -46,6 +46,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      
 
     
     </div>

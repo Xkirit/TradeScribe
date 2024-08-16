@@ -12,7 +12,7 @@ const Navbar = ({ toggleSidebar }) => {
     navigate('/signin');
   }
   return (
-    <nav className="fixed z-10 backdrop-blur-lg w-screen text-green-900 p-5 py-3 flex items-center justify-between shadow-sm border-none">
+    <nav className="fixed z-10 backdrop-blur-md w-screen text-green-900 p-5 py-3 flex items-center justify-between shadow-sm border-none">
       <div className="flex items-center space-x-4">
         <button
           onClick={(e) => {

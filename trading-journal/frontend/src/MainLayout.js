@@ -17,7 +17,7 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="relative h-screen py-2 overflow-hidden bg-secondary-gradient font-playfair text-primary">
+    <div className="relative flex-grow min-h-screen py-2  bg-secondary-gradient font-playfair text-primary">
       <Sidebar isOpen={isSidebarOpen} />
       {isSidebarOpen && (
         <div
@@ -26,15 +26,15 @@ const MainLayout = () => {
         />
       )}
       <div
-        className={`transition-blur duration-300 ease-in-out w-full ${
-          isSidebarOpen ? 'blur-sm' : ''
-        }`}>
+        className={`transition-blur duration-300 ease-in-out w-full ${isSidebarOpen ? 'blur-sm' : ''
+          }`}>
         {/* Wrap both Navbar and main content inside the blurred container */}
-        <Navbar  toggleSidebar={toggleSidebar} />
+        <Navbar toggleSidebar={toggleSidebar} />
         <div className="flex flex-col items-center py-4 min-h-screen">
           <Outlet />
         </div>
       </div>
+      
     </div>
   );
 };

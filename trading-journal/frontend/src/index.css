@@ -22,10 +22,11 @@
 }
 
 html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%; /* Ensure the body can grow with content */ 
+  overflow-x: hidden;
+  overflow-y: auto; /* Ensure vertical scrolling is enabled */
+  scroll-behavior: smooth; /* Optional: for smooth scrolling */
 }
-body {
-  overflow: auto;
-}
+
