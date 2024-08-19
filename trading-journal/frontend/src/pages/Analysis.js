@@ -105,8 +105,8 @@ const Analysis = () => {
   };
 
   return (
-    <div className=" min-h-screen py-12 px-4">
-      <h1 className="text-3xl font-bold text-primary mb-4">Equity Analysis</h1>
+    <div className=" min-h-screen py-[8vh] px-4">
+      <h1 className="text-3xl font-bold text-green-900">Equity Analysis</h1>
       <p className="text-secondary-lightest mb-8">
         Analyze your trading performance with various charts and metrics.
       </p>

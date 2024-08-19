@@ -111,7 +111,7 @@ const Trades = () => {
   };
 
   return (
-    <div className="py-4">
+    <div className="py-12">
       <h1 className="text-3xl font-bold mb-4">Trade Tracker</h1>
 
       <form onSubmit={handleSubmit} className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg w-full">

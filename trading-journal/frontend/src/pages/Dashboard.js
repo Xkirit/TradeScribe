@@ -117,8 +117,8 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="dashboard flex flex-col h-full w-full px-10">
-            <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+        <div className="dashboard flex flex-col h-full w-full px-10 py-[10vh]">
+            <h1 className="text-3xl font-bold mb-4 text-center text-green-900">Dashboard</h1>
 
             {!isBalanceSet ? (
                 <div className="mb-6">
@@ -140,7 +140,7 @@ const Dashboard = () => {
                     </form>
                 </div>
             ) : (
-                <div className="flex justify-end mb-6 py-0">
+                <div className="flex justify-end mb-6 py-0 z-6">
                     <button
                         onClick={handleReset}
                         className="bg-red-500 text-white py-2 px-4 rounded-lg"

@@ -12,7 +12,7 @@ const Navbar = ({ toggleSidebar }) => {
     navigate('/signin');
   }
   return (
-    <nav className="fixed z-10 backdrop-blur-md w-screen text-green-900 p-5 py-3 flex items-center justify-between shadow-sm border-none">
+    <nav className=" navbar fixed z-10 backdrop-blur-md w-screen sm:w-screen text-green-900 p-5 py-3 flex items-center justify-between shadow-sm border-none">
       <div className="flex items-center space-x-4">
         <button
           onClick={(e) => {
@@ -23,15 +23,15 @@ const Navbar = ({ toggleSidebar }) => {
         >
           <RxHamburgerMenu size={24} />
         </button>
-        <div style={{ fontWeight: 950}} className="text-2xl font-extrabold font-playfair italic">TradeScribe</div>
+        <div style={{ fontWeight: 950}} className="lg:text-2xl sm:text-sm font-extrabold font-playfair italic">TradeScribe</div>
       </div>
-      <div className="space-x-4">
+      <div className="space-x-8">
         <Link to='/'>
-        <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
+        <button className="navbar bg-none hover:bg-primary  font-bold py-1 px-3 rounded">
           Home 
         </button>
         </Link>
-        <button className="bg-none hover:bg-primary text-white font-bold py-1 px-3 rounded">
+        <button className="navbar bg-none hover:bg-primary  font-bold py-1 px-3 rounded">
           About
         </button>
         {auth.token ? (
@@ -42,12 +42,14 @@ const Navbar = ({ toggleSidebar }) => {
               Sign Out
             </button>
           ) : (
+            <button className="navbar bg-none hover:bg-primary  font-bold py-1 px-3 rounded">
             <Link 
               to="/signin" 
-              className=" text-primary px-4 py-2 rounded-lg"
+              
             >
-              Sign In
+              SignIn
             </Link>
+            </button>
           )}
       </div>
     </nav>

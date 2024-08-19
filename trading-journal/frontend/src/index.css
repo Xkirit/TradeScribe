@@ -27,6 +27,35 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto; /* Ensure vertical scrolling is enabled */
-  scroll-behavior: smooth; /* Optional: for smooth scrolling */
+  scroll-behavior: smooth;
+  scrollbar-width:none;
+  background: linear-gradient(to bottom, #06D001, #F3FF90);
+   /* Optional: for smooth scrolling */
 }
 
+body.darkMode {
+  background-image:linear-gradient(to bottom, #004400, #1A1A1A);
+  color: #ffffff;
+}
+
+/* nav.darkMode h1{
+
+  color:#E0E0E0;
+
+} */
+
+body.darkMode h1 {
+  color: #E0E0E0;
+}
+body.darkMode .navbar{
+  color: #E0E0E0;
+
+}
+body.darkMode .container {
+  background-color: inherit;
+  color: #E0E0E0;
+}
+body.darkMode .subs {
+  background-color: inherit;
+  color: #e0e0e0c5;
+}

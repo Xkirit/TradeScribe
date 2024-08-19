@@ -1,10 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 
 const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+  
+  const[DarkMode,SetDarkMode]= useState(()=>{
+    const savedMode= localStorage.getItem('mode');
+    return savedMode==='true'|| false;
+  });
+
+
+  useEffect(()=>{
+    if(DarkMode){
+      document.body.classList.add('darkMode');
+      
+      console.log('darkmode: on',DarkMode);
+    }
+    else{document.body.classList.remove('darkMode');
+    console.log("darkMode: off");
+    
+}localStorage.setItem('mode',DarkMode);},[DarkMode])
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -17,7 +34,7 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="relative flex-grow min-h-screen py-2  bg-secondary-gradient font-playfair text-primary">
+    <div className="relative flex-grow flex-shrink min-h-screen py-2  bg-secondary-gradient font-playfair text-primary">
       <Sidebar isOpen={isSidebarOpen} />
       {isSidebarOpen && (
         <div
