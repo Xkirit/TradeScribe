@@ -12,7 +12,7 @@ const Navbar = ({ toggleSidebar }) => {
     navigate('/signin');
   }
   return (
-    <nav className=" navbar fixed z-10 backdrop-blur-md w-screen sm:w-screen text-green-900 p-5 py-3 flex items-center justify-between shadow-sm border-none">
+    <nav className=" navbar fixed z-10 backdrop-blur-md w-screen sm:w-screen text-green-900 p-5 py-1 flex items-center justify-between shadow-sm border-none">
       <div className="flex items-center space-x-4">
         <button
           onClick={(e) => {
@@ -25,7 +25,7 @@ const Navbar = ({ toggleSidebar }) => {
         </button>
         <div style={{ fontWeight: 950}} className="lg:text-2xl sm:text-sm font-extrabold font-playfair italic">TradeScribe</div>
       </div>
-      <div className="space-x-8">
+      <div className="space-x-5">
         <Link to='/'>
         <button className="navbar bg-none hover:bg-primary  font-bold py-1 px-3 rounded">
           Home 

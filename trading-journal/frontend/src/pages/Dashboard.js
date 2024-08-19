@@ -32,7 +32,7 @@ const Dashboard = () => {
 
     const fetchTrades = async () => {
         try {
-            const response = await fetch('https://trading-journalv2.vercel.app/api/trades', {
+            const response = await fetch('http://localhost:5000/api/trades', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
