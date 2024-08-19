@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Line } from 'react-chartjs-2';
 import { AuthContext } from '../context/AuthContext';
-import { Filler } from 'chart.js';
 import dayjs from 'dayjs';
 
 const Dashboard = () => {
