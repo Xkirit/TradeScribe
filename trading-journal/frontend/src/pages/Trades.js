@@ -111,7 +111,7 @@ const Trades = () => {
   };
 
   return (
-    <div className="py-12">
+    <div className="py-12 mt-5">
       <h1 className="text-3xl font-bold mb-4">Trade Tracker</h1>
 
       <form onSubmit={handleSubmit} className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg w-full">
@@ -123,7 +123,7 @@ const Trades = () => {
               name="asset"
               value={trade.asset}
               onChange={handleChange}
-              className="w-full px-3 py-1 border border-transparent rounded-lg bg-none"
+              className="w-full px-3 py-1 border border-transparent rounded-lg bg-white"
               placeholder="Enter asset"
             />
           </div>
