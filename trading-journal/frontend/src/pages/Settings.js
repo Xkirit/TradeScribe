@@ -12,10 +12,10 @@ const Settings = () => {
     if(DarkMode){
       document.body.classList.add('darkMode');
       
-      console.log('darkmode: on',DarkMode);
+      // ('darkmode: on',DarkMode);
     }
     else{document.body.classList.remove('darkMode');
-    console.log("darkMode: off");
+    // ("darkMode: off");
     
 }localStorage.setItem('mode',DarkMode);},[DarkMode])
 
@@ -28,7 +28,7 @@ const Settings = () => {
 
 
   return (
-    <div className=" py-[12vh] w-[100vh] items-end">
+    <div className=" py-[12vh] w-max items-end ml-10">
       <div className=' flex-1 w-[80vh] h-[80vh]'>
         <h1 className="text-4xl font-bold font-playfair text-green-900 ">Settings</h1>
     

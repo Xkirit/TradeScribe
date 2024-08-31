@@ -116,18 +116,18 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="dashboard flex flex-col h-full w-full px-10 py-[10vh]">
+        <div className="dashboard flex flex-col h-full w-auto px-10 py-[10vh]">
             <h1 className="text-3xl font-bold mb-4 text-center text-green-900">Dashboard</h1>
 
             {!isBalanceSet ? (
-                <div className="mb-6">
+                <div className="mb-6 justify center">
                     <form onSubmit={handleSubmit}>
                         <label className="block text-lg font-medium mb-2">Initial Balance:</label>
                         <input
                             type="number"
                             value={initialBalance}
                             onChange={handleInitialBalanceChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                            className="w-max px-3 py-2 border border-gray-300 rounded-lg justify-between"
                             placeholder="Enter your initial balance"
                         />
                         <button

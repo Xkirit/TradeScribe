@@ -37,12 +37,12 @@ const Navbar = ({ toggleSidebar }) => {
         {auth.token ? (
             <button 
               onClick={handleLogout} 
-              className=" text-primary px-4 py-2 rounded-lg"
+              className=" text-red-400 hover:bg-primary bg-none font-bold  px-3  rounded "
             >
-              Sign Out
+              Signout
             </button>
           ) : (
-            <button className="navbar bg-none hover:bg-primary  font-bold py-1 px-3 rounded">
+            <button className="navbar bg-none hover:bg-primary  font-bold  px-3 rounded">
             <Link 
               to="/signin" 
               

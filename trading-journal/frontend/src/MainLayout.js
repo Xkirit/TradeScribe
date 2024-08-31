@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
+// import ParticlesBackground from './components/ParticleBg';
 
 const MainLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
@@ -16,10 +18,10 @@ const MainLayout = () => {
     if(DarkMode){
       document.body.classList.add('darkMode');
       
-      console.log('darkmode: on',DarkMode);
+      // ('darkmode: on',DarkMode);
     }
     else{document.body.classList.remove('darkMode');
-    console.log("darkMode: off");
+    // ("darkMode: off");
     
 }localStorage.setItem('mode',DarkMode);},[DarkMode])
 
@@ -34,7 +36,7 @@ const MainLayout = () => {
   };
 
   return (
-    <div className="relative flex-grow flex-shrink min-h-screen py-2  bg-secondary-gradient font-playfair text-primary">
+    <div className="relative flex-grow flex-shrink min-h-screen bg-secondary-gradient font-playfair text-primary">
       <Sidebar isOpen={isSidebarOpen} />
       {isSidebarOpen && (
         <div
@@ -51,7 +53,7 @@ const MainLayout = () => {
           <Outlet />
         </div>
       </div>
-      
+      <Footer/>
     </div>
   );
 };

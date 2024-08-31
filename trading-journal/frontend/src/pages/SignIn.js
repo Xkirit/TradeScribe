@@ -34,15 +34,16 @@ const SignIn = () => {
 
   return (
     <div className="relative flex items-center py-10 justify-center min-h-screen bg-secondary-gradient text-primary font-playfair">
+      <button className='absolute top-10 pr-6 text-center right-10 font-bold bg-none hover:bg-primary text-white py-1 px-3 rounded-lg text-md'>
       <Link
         to="/"
-        className="absolute top-1 right-3 bg-none hover:bg-primary text-white py-1 px-3 rounded-lg text-sm"
       >
         Home
       </Link>
+      </button>
 
       <div className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-md w-full max-w-xs">
-        <h2 className="text-lg font-bold mb-4">Sign In</h2>
+        <h2 className="text-lg font-bold mb-4 text-center">Sign In</h2>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-3">

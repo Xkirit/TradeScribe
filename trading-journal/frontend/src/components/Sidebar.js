@@ -13,11 +13,11 @@ const Sidebar = ({ isOpen }) => {
     if (DarkMode) {
       document.body.classList.add('darkMode');
 
-      console.log('darkmode: on', DarkMode);
+      // ('darkmode: on', DarkMode);
     }
     else {
       document.body.classList.remove('darkMode');
-      console.log("darkMode: off");
+      // ("darkMode: off");
 
     } localStorage.setItem('mode', DarkMode);
   }, [DarkMode])
