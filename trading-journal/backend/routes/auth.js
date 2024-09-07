@@ -11,6 +11,11 @@ router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
+    // Basic validation
+    if (!username || !email || !password) {
+      return res.status(400).json({ msg: 'Please provide all fields' });
+    }
+
     // Check if user already exists
     let user = await User.findOne({ email });
     if (user) {
@@ -27,37 +32,47 @@ router.post('/register', async (req, res) => {
 
     res.status(201).json({ msg: 'User registered' });
   } catch (err) {
-    console.error(err.message);  // Log error details
+    console.error('Error in registration:', err.message);  // Log detailed error
     res.status(500).json({ error: 'Server error' });
   }
 });
+
 
 // @route    POST /api/auth/login
 // @desc     Login user and return JWT token
 // @access   Public
 router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  User.findOne({ username: username })
-    .then(User => {
-      if (User) {
-        bcrypt.compare(password, User.password, (err, response) => {
-          if (err) {
-            res.json("password is incorrect");
-          }
-          const payload = { user: { id: User.id } };
-          const token= jwt.sign(payload, process.env.JWT_SECRET, {expiresIn:"1d"})
-          res.cookie("token", token)
-          console.log(token);
-          console.log('user:', User);
-          res.json({token});
-        })
-      } else {
-        res.json("No record existed")
-      }
-    })
+  try {
+    const { username, password } = req.body;
+
+    // Check if the user exists
+    let user = await User.findOne({ username });
+    if (!user) {
+      return res.status(400).json({ msg: 'No user found with this username' });
+    }
+
+    // Check password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ msg: 'Invalid password' });
+    }
+
+    // Create JWT token
+    const payload = { user: { id: user.id } };
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
+
+    // Set token as a cookie
+    res.cookie('token', token, { httpOnly: true });
+
+    res.json({ token });
+  } catch (err) {
+    console.error('Error in login:', err.message);  // Log detailed error
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
  
   
-});
+
 
 module.exports = router;
