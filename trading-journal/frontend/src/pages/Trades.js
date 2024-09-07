@@ -24,7 +24,7 @@ const Trades = () => {
           throw new Error('No token found');
         }
 
-        const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
+        const response = await fetch('https://trade-scribe.vercel.app/api/trades', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const Trades = () => {
     const pnl = calculatePnL(entry, exit, quantity);
 
     try {
-      const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
+      const response = await fetch('https://trade-scribe.vercel.app/api/trades', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const Trades = () => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`https://tradescribe-1.onrender.com/api/trades/${id}`, {
+      await fetch(`https://trade-scribe.vercel.app/api/trades/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${auth.token}` // Add token to headers

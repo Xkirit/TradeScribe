@@ -12,7 +12,7 @@ const SignIn = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch('https://tradescribe-1.onrender.com/api/auth/login', {  // Change to login endpoint
+      const response = await fetch('https://trade-scribe.vercel.app/api/auth/login', {  // Change to login endpoint
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

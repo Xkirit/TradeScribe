@@ -32,7 +32,7 @@ const SignUp = () => {
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const response = await fetch('https://tradescribe-1.onrender.com/api/auth/register', {
+        const response = await fetch('https://trade-scribe.vercel.app/api/auth/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

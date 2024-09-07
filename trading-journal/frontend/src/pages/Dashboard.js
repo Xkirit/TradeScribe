@@ -31,7 +31,7 @@ const Dashboard = () => {
 
     const fetchTrades = async () => {
         try {
-            const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
+            const response = await fetch('https://trade-scribe.vercel.app/api/trades', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
