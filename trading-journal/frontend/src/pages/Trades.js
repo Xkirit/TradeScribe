@@ -24,7 +24,7 @@ const Trades = () => {
           throw new Error('No token found');
         }
 
-        const response = await fetch('http://localhost:5000/api/trades', {
+        const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const Trades = () => {
     const pnl = calculatePnL(entry, exit, quantity);
 
     try {
-      const response = await fetch('http://localhost:5000/api/trades', {
+      const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ const Trades = () => {
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/trades/${id}`, {
+      await fetch(`https://tradescribe-1.onrender.com/api/trades/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${auth.token}` // Add token to headers
@@ -111,13 +111,13 @@ const Trades = () => {
   };
 
   return (
-    <div className="py-12 mt-5">
-      <h1 className="text-3xl font-bold mb-4 text-green-900">Trade Tracker</h1>
+    <>
+      <h1 className="text-3xl font-bold mb-4 text-green-900 pt-12">Trade Tracker</h1>
 
-      <form onSubmit={handleSubmit} className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg w-full">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
+      <form onSubmit={handleSubmit} className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg max-w-[90vh] mx-auto py-12 mt-4 ">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-4">
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Asset</label>
+            <label className="block text-sm font-medium mb-1 subs">Asset</label>
             <input
               type="text"
               name="asset"
@@ -129,7 +129,7 @@ const Trades = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Entry Price</label>
+            <label className="block text-sm font-medium mb-1 subs">Entry Price</label>
             <input
               type="number"
               name="entry"
@@ -141,7 +141,7 @@ const Trades = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Exit Price</label>
+            <label className="block text-sm font-medium mb-1 subs">Exit Price</label>
             <input
               type="number"
               name="exit"
@@ -153,7 +153,7 @@ const Trades = () => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Quantity</label>
+            <label className="block text-sm font-medium mb-1 subs">Quantity</label>
             <input
               type="number"
               name="quantity"
@@ -165,7 +165,7 @@ const Trades = () => {
           </div>
 
           <div className="mb-4 col-span-2">
-            <label className="block text-sm font-medium mb-1">Date</label>
+            <label className="block text-sm font-medium mb-1 subs">Date</label>
             <input
               type="date"
               name="date"
@@ -176,7 +176,7 @@ const Trades = () => {
           </div>
 
           <div className="mb-4 col-span-2">
-            <label className="block text-sm font-medium mb-1">Notes</label>
+            <label className="block text-sm font-medium mb-1 subs">Notes</label>
             <textarea
               name="notes"
               value={trade.notes}
@@ -189,16 +189,16 @@ const Trades = () => {
 
           <button
             type="submit"
-            className="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-dark col-span-2"
+            className="w-full bg-black text-white py-2 rounded-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-dark col-span-2"
+
           >
             Add Trade
           </button>
         </div>
       </form>
 
-      <div className="mt-6">
-        <h2 className="text-2xl font-bold mb-4">Trades List</h2>
-        <table className="w-full bg-white bg-opacity-20 backdrop-blur-md rounded-lg shadow-md text-center">
+      <div className="mt-6 mx-auto">
+        <table className="w-[70vh] mt-5 gap-6 bg-white bg-opacity-20 backdrop-blur-md rounded-lg shadow-md text-center md:text-md sm:text-sm ">
           <thead>
             <tr>
               <th className="p-2">Asset</th>
@@ -234,7 +234,7 @@ const Trades = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 };
 

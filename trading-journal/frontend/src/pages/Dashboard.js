@@ -31,7 +31,7 @@ const Dashboard = () => {
 
     const fetchTrades = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/trades', {
+            const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -116,11 +116,11 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="dashboard flex flex-col h-full w-auto px-10 py-[10vh]">
+        <div className="dashboard flex flex-col h-full w-screen px-10 py-[10vh]">
             <h1 className="text-3xl font-bold mb-4 text-center text-green-900">Dashboard</h1>
 
             {!isBalanceSet ? (
-                <div className="mb-6 justify center">
+                <div className="mb-6 justify text-center">
                     <form onSubmit={handleSubmit}>
                         <label className="block text-lg font-medium mb-2">Initial Balance:</label>
                         <input
@@ -132,7 +132,7 @@ const Dashboard = () => {
                         />
                         <button
                             type="submit"
-                            className="mt-2 bg-primary text-white py-2 px-4 rounded-lg"
+                            className="mt-2 bg-primary text-white py-2 px-4 rounded-lg text-center"
                         >
                             Set Initial Balance
                         </button>
