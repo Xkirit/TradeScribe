@@ -39,8 +39,13 @@ const Dashboard = () => {
                 },
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
             const data = await response.json();
             setEquityData(data);
+
             if (isBalanceSet && initialBalance) {
                 const curveAndLabels = calculateEquityCurveAndLabels(data, parseFloat(initialBalance));
                 setEquityCurve(curveAndLabels.curve);
@@ -54,37 +59,48 @@ const Dashboard = () => {
     };
 
     const calculateEquityCurveAndLabels = (trades, balance) => {
+        if (!Array.isArray(trades) || trades.length === 0) {
+            console.error('No trades data available.');
+            return { curve: [], labels: [] };
+        }
+    
+        // Safeguard against undefined trades[0]
+        const startDate = trades[0] && trades[0].date ? dayjs(trades[0].date) : dayjs();
+    
         let equity = [balance];
         let labels = [];
-        let currentDate = dayjs(trades[0].date); // Start from the first trade date
-
+        let currentDate = startDate;
+    
         trades.forEach(trade => {
+            if (!trade || !trade.date) {
+                console.error('Invalid trade object:', trade);
+                return;
+            }
+    
             const tradeDate = dayjs(trade.date);
-
-            // Fill missing dates
+    
             while (currentDate.isBefore(tradeDate)) {
                 labels.push(currentDate.format('YYYY-MM-DD'));
-                equity.push(equity[equity.length - 1]); // Carry forward the balance
+                equity.push(equity[equity.length - 1]);
                 currentDate = currentDate.add(1, 'day');
             }
-
+    
             const newBalance = equity[equity.length - 1] + trade.pnl;
             equity.push(newBalance);
             labels.push(tradeDate.format('YYYY-MM-DD'));
             currentDate = tradeDate.add(1, 'day');
         });
-
-        // Fill remaining dates until today
+    
         const today = dayjs();
         while (currentDate.isBefore(today) || currentDate.isSame(today, 'day')) {
             labels.push(currentDate.format('YYYY-MM-DD'));
             equity.push(equity[equity.length - 1]);
             currentDate = currentDate.add(1, 'day');
         }
-
+    
         return { curve: equity, labels };
     };
-
+    
     const handleInitialBalanceChange = (e) => {
         setInitialBalance(e.target.value);
     };
@@ -120,19 +136,19 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold mb-4 text-center text-green-900">Dashboard</h1>
 
             {!isBalanceSet ? (
-                <div className="mb-6 justify text-center">
+                <div className="mb-6 text-center">
                     <form onSubmit={handleSubmit}>
                         <label className="block text-lg font-medium mb-2">Initial Balance:</label>
                         <input
                             type="number"
                             value={initialBalance}
                             onChange={handleInitialBalanceChange}
-                            className="w-max px-3 py-2 border border-gray-300 rounded-lg justify-between"
+                            className="w-max px-3 py-2 border border-gray-300 rounded-lg"
                             placeholder="Enter your initial balance"
                         />
                         <button
                             type="submit"
-                            className="mt-2 bg-primary text-white py-2 px-4 rounded-lg text-center"
+                            className="mt-2 bg-primary text-white py-2 px-4 rounded-lg"
                         >
                             Set Initial Balance
                         </button>
