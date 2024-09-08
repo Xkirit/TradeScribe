@@ -31,7 +31,7 @@ const Dashboard = () => {
 
     const fetchTrades = async () => {
         try {
-            const response = await fetch('https://trade-scribe.vercel.app/api/trades', {
+            const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -136,19 +136,19 @@ const Dashboard = () => {
             <h1 className="text-3xl font-bold mb-4 text-center text-green-900">Dashboard</h1>
 
             {!isBalanceSet ? (
-                <div className="mb-6 text-center">
-                    <form onSubmit={handleSubmit}>
+                <div className="mb-6 text-center gap-3">
+                    <form onSubmit={handleSubmit} className=''>
                         <label className="block text-lg font-medium mb-2">Initial Balance:</label>
                         <input
                             type="number"
                             value={initialBalance}
                             onChange={handleInitialBalanceChange}
-                            className="w-max px-3 py-2 border border-gray-300 rounded-lg"
+                            className="w-max px-3 py-2 border border-gray-300 rounded-lg bg-white bg-opacity-20"
                             placeholder="Enter your initial balance"
                         />
                         <button
-                            type="submit"
-                            className="mt-2 bg-primary text-white py-2 px-4 rounded-lg"
+                            onClick={handleSubmit}
+                            className="mt-2 mx-3 bg-primary text-white py-2 px-4 rounded-lg"
                         >
                             Set Initial Balance
                         </button>

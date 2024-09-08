@@ -3,7 +3,7 @@ import React from 'react';
 function Footer() {
   return (
     <footer className="bg-green-950 text-base-content p-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid lg:grid-cols-4 grid-cols-2 sm:text-sm md:text-md gap-5">
         {/* Services */}
         <nav>
           <h6 className="footer-title text-lg sm:text-md font-bold mb-4">Services</h6>

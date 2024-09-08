@@ -28,7 +28,7 @@ const Settings = () => {
 
 
   return (
-    <div className=" py-[12vh] w-max items-end ml-10">
+    <div className=" py-[12vh] w-full  container px-10 flex">
       <div className=' flex-1 w-[80vh] h-[80vh]'>
         <h1 className="text-4xl font-bold font-playfair text-green-900 ">Settings</h1>
     

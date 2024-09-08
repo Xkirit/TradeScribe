@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { SmallAddIcon } from '@chakra-ui/icons';
+import { AddIcon } from '@chakra-ui/icons';
 
 const Navbar = ({ toggleSidebar }) => {
   const { auth, logout } = useAuth();
@@ -68,7 +68,7 @@ const Navbar = ({ toggleSidebar }) => {
       </div>
 
       {/* Dropdown menu for small screens */}
-      <div className="lg:hidden md:hidden sm:flex items-center">
+      {/* <div className="lg:hidden md:hidden sm:flex items-center">
         <button
           onClick={toggleDropdown}
           className="text-green-900 subs focus:outline-none"
@@ -97,6 +97,31 @@ const Navbar = ({ toggleSidebar }) => {
             )}
           </div>
         )}
+      </div> */}
+
+      <div className="dropdown dropdown-bottom dropdown-end lg:hidden md:hidden backdrop-blur-md z-10">
+        <div tabIndex={0} role="button" className="btn glass bg-transparent text-green-900 border-none size-10 shadow-none"><AddIcon/></div>
+        <ul tabIndex={0} className="dropdown-content menu bg-white bg-opacity-30 backdrop-blur-lg rounded-box z-20 w-52 p-2 shadow">
+          <li><a><Link to="/">Home</Link></a></li>
+          <li><a><Link to="/About">About</Link></a></li>
+          <li><a>
+
+          {auth.token ? (
+          <button
+            onClick={handleLogout}
+            className="text-red-400 hover:bg-primary bg-none font-bold px-3 rounded"
+          >
+            Signout
+          </button>
+        ) : (
+          <Link to="/signin">
+            Sign in
+          </Link>
+        )}
+            
+            
+            </a></li>
+        </ul>
       </div>
     </nav>
   );

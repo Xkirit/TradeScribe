@@ -15,7 +15,7 @@
 
 /* Example of custom styling */
 .chart-container {
-  background-color: none;
+  background: none;
   border-radius: 8px;
   padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -52,10 +52,10 @@ body.darkMode .navbar{
 
 }
 body.darkMode .container {
-  background-color: inherit;
+  background: inherit;
   color: #E0E0E0;
 }
 body.darkMode .subs {
-  background-color: inherit;
+  background: inherit;
   color: #e0e0e0c5;
 }
