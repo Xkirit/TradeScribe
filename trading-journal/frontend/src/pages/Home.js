@@ -35,7 +35,7 @@ const Home = () => {
 
       <section className="py-18 lg:py-20 flex subs bg-none">
         <div className="container mx-auto text-center bg-none">
-          <h2 className="lg:text-3xl sm:text-1xl font-semibold subs text-gray-800 mb-8">
+          <h2 className=" font-semibold subs text-[20px] md:text-2xl lg:text-3xl text-gray-800 mb-6">
             Why Choose TradeScribe?
           </h2>
           <Marquee fade={true}>
@@ -67,12 +67,11 @@ const Home = () => {
           </Marquee>
         </div>
       </section>
-      <section class="ezy__testimonial5 flex light py-14 md:py-24 bg-none text-green-900">
+      <section class="ezy__testimonial5 flex light py-20 md:py-24 bg-none text-green-900">
         <div class="container px-4 sm:w-sm md:w-md  ">
           <div class="flex justify-center md:mb-6 sm:text-sm mx-7">
             <div class="sm:max-w-lg text-center">
-              <h2 class="text-3xl leading-none md:text-[45px] sm:text-[30px] font-bold mb-4">Community Reviews</h2>
-              <p>From there give dominion, lights doesn't good all rule let open, appear our beast second bearing.</p>
+              <h2 class="text-[25px] leading-none md:text-2xl subs lg:text-3xl font-mono font-semibold mb-2">Community Reviews</h2>
             </div>
           </div>
 
