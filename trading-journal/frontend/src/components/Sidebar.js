@@ -51,12 +51,13 @@ const Sidebar = ({ isOpen }) => {
         <Link to="/Help" className="block py-5 pl-2 px-10 rounded text-center transition duration-200 hover:bg-secondary-light">
           Help
         </Link>
-        <div className=" py-[50vh] pl-[7vh] items-center bottom-1 justify-center">
+        </nav>
+        <div className="block py-[20vh] pl-[6vh] rounded text-center items-center">
 
-          <ul className=''>
+          <ul>
 
             <li>
-              <label className="flex cursor-pointer gap-2">
+              <label className="flex cursor-pointer gap-2 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -92,7 +93,7 @@ const Sidebar = ({ isOpen }) => {
 
 
         </div>
-      </nav >
+      
     </div>
   );
 };
