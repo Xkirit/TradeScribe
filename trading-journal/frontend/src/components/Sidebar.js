@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen }) => {
 
   return (
     <div
-      className={`container text-1xl font-playfair font-bold  text-green-900 w-64 h-full fixed top-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
+      className={`container text-1xl font-poppins font-bold  text-green-900 w-64 h-full fixed top-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-200 ease-in-out shadow-lg z-50 rounded-r-lg`}
       onClick={(e) => e.stopPropagation()} // Prevent clicks inside the sidebar from closing it
     >

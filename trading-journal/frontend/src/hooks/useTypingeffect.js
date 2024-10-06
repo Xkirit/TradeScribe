@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 
 const useTypingEffect = (texts, typingSpeed = 100, deletingSpeed = 50, pauseTime = 1000) => {
   const [displayText, setDisplayText] = useState('');
@@ -6,7 +6,7 @@ const useTypingEffect = (texts, typingSpeed = 100, deletingSpeed = 50, pauseTime
   const [isDeleting, setIsDeleting] = useState(false);
   const [pause, setPause] = useState(false);
 
-  useEffect(() => {
+  useMemo(() => {
     let typingTimeout;
 
     const handleTyping = () => {

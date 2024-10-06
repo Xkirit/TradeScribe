@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useMemo, Suspense } from 'react';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { AuthContext } from '../context/AuthContext';
 
@@ -15,7 +15,7 @@ const Trades = () => {
     notes: ''
   });
 
-  useEffect(() => {
+  useMemo(() => {
     const fetchTrades = async () => {
       try {
         const token = auth.token;
@@ -111,11 +111,14 @@ const Trades = () => {
   };
 
   return (
-    <div className="py-12 mt-5">
-      <h1 className="text-3xl font-bold mb-4 text-green-900">Trade Tracker</h1>
+    <div className="py-12 mt-7 w-full max-w-max mx-5 font-poppins">
+      <h1 className="text-3xl font-bold mb-4 text-green-900 font-playfair">Trade Tracker</h1>
 
-      <form onSubmit={handleSubmit} className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg w-full">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg w-full"
+      >
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 mx-auto">
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">Asset</label>
             <input
@@ -123,7 +126,7 @@ const Trades = () => {
               name="asset"
               value={trade.asset}
               onChange={handleChange}
-              className="w-full px-3 py-1 border border-transparent rounded-lg bg-white"
+              className="w-full px-3 py-1 border border-transparent rounded-lg bg-white "
               placeholder="Enter asset"
             />
           </div>
@@ -188,8 +191,8 @@ const Trades = () => {
           </div>
 
           <button
-            type="submit"
-            className="w-full bg-primary text-white py-2 rounded-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-dark col-span-2"
+            onClick={handleSubmit}
+            className="w-full bg-primary-light button hover text-white py-2 rounded-lg hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary-dark col-span-2"
           >
             Add Trade
           </button>
@@ -198,7 +201,8 @@ const Trades = () => {
 
       <div className="mt-6">
         <h2 className="text-2xl font-bold mb-4">Trades List</h2>
-        <table className="w-full bg-white bg-opacity-20 backdrop-blur-md rounded-lg shadow-md text-center">
+
+        <table className="w-full bg-white bg-opacity-20 backdrop-blur-md rounded-lg shadow-md text-center subs">
           <thead>
             <tr>
               <th className="p-2">Asset</th>

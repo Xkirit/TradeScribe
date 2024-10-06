@@ -1,61 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Utility Classes */
 .opacity-50 {
   pointer-events: none; /* Prevent interactions with the content when the sidebar is open */
 }
-/* Optional: Remove any additional shadows or borders if needed */
+
 .shadow-none {
-  box-shadow: none;
+  box-shadow: none; /* Remove shadows if needed */
 }
 
-/* Add this to your global CSS file */
-/* Add this to your global CSS file */
-
-
-/* Example of custom styling */
+/* Custom Styling */
 .chart-container {
-  background-color: none;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  @apply flex p-4 rounded-lg shadow-lg;
+  background-color: transparent; /* Transparent background */
 }
 
+/* Global Styles */
 html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto; /* Ensure vertical scrolling is enabled */
-  scroll-behavior: smooth;
-  scrollbar-width:none;
-  background: linear-gradient(to bottom, #06D001, #F3FF90);
-   /* Optional: for smooth scrolling */
+  @apply h-full m-0 p-0 overflow-x-hidden overflow-y-auto scroll-smooth;
+  scrollbar-width: none; /* Hide default scrollbar */
+  background: linear-gradient(to bottom, #06D001, #F3FF90); /* Light mode gradient */
+  user-select: none;
 }
 
 body.darkMode {
-  background-image:linear-gradient(to bottom, #004400, #1A1A1A);
-  color: #ffffff;
+  background-image: linear-gradient(to bottom, #004400, #1A1A1A); /* Dark mode gradient */
+  @apply text-white;
 }
 
-/* nav.darkMode h1{
-
-  color:#E0E0E0;
-
-} */
-
-body.darkMode h1 {
-  color: #E0E0E0;
+/* Navbar Styling */
+.navbar {
+  @apply flex justify-between;
 }
-body.darkMode .navbar{
-  color: #E0E0E0;
 
+body.darkMode .navbar {
+  @apply text-gray-200; /* Light grey text in dark mode */
 }
+
+/* Container and Subs Styling */
 body.darkMode .container {
-  background-color: inherit;
-  color: #E0E0E0;
+  @apply bg-inherit text-gray-200;
 }
+
 body.darkMode .subs {
-  background-color: inherit;
-  color: #e0e0e0c5;
+  @apply bg-inherit text-gray-300; /* Slightly lighter grey text */
+}
+
+/* Typography Adjustments for Dark Mode */
+body.darkMode h1 {
+  @apply text-gray-200; /* Light grey for headers */
+}
+
+/* Hide the scrollbar */
+::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Webkit-based browsers */
+}
+
+body.darkMode .button{
+  @apply bg-primary 
+}
+
+body.darkMode .hover{
+  @apply hover:bg-primary-light
 }

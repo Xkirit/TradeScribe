@@ -34,7 +34,7 @@ const SignIn = () => {
 
   return (
     <div className="relative flex items-center py-10 justify-center min-h-screen bg-secondary-gradient text-primary font-playfair">
-      <button className='absolute top-10 pr-6 text-center right-10 font-bold bg-none hover:bg-primary text-white py-1 px-3 rounded-lg text-md'>
+      <button className='absolute top-10 pr-4 text-center right-10 font-bold  hover:bg-primary text-green-900 subs py-1 px-3 rounded-lg text-md btn glass'>
       <Link
         to="/"
       >
@@ -72,8 +72,8 @@ const SignIn = () => {
           
           <div className='py-2'>
             <button
-              type="submit"
-              className="w-full bg-primary text-white py-1 rounded-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-dark text-sm"
+              onClick={handleSubmit}
+              className="w-full btn-glass bg-primary text-white py-1 rounded-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-dark text-sm btn-sm glass"
             >
               Sign In
             </button>

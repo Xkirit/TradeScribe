@@ -3,7 +3,7 @@ import React from 'react'
 function Footer() {
   return (
     <div>
-      <footer className="footer flex-col gap-0 z-100 justify-items-center bg-green-950  text-base-content p-10 ">
+      <footer className="footer grid grid-cols-2 gap-10 z-50 justify-items-center bg-green-950 w-full text-base-content p-10 ">
         <nav>
           <h6 className="footer-title">Services</h6>
           <a className="link link-hover">Branding</a>
