@@ -13,8 +13,15 @@
 
 /* Custom Styling */
 .chart-container {
+<<<<<<< HEAD
   @apply flex p-4 rounded-lg shadow-lg;
   background-color: transparent; /* Transparent background */
+=======
+  background: none;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+>>>>>>> b476d4df241884b4bca59c7038a851744388bef3
 }
 
 /* Global Styles */
@@ -41,11 +48,21 @@ body.darkMode .navbar {
 
 /* Container and Subs Styling */
 body.darkMode .container {
+<<<<<<< HEAD
   @apply bg-inherit text-gray-200;
+=======
+  background: inherit;
+  color: #E0E0E0;
+>>>>>>> b476d4df241884b4bca59c7038a851744388bef3
 }
 
 body.darkMode .subs {
+<<<<<<< HEAD
   @apply bg-inherit text-gray-300; /* Slightly lighter grey text */
+=======
+  background: inherit;
+  color: #e0e0e0c5;
+>>>>>>> b476d4df241884b4bca59c7038a851744388bef3
 }
 
 /* Typography Adjustments for Dark Mode */

@@ -31,8 +31,13 @@ const Sidebar = ({ isOpen }) => {
 
   return (
     <div
+<<<<<<< HEAD
       className={`container text-1xl font-poppins font-bold  text-green-900 w-64 h-full fixed top-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-200 ease-in-out shadow-lg z-50 rounded-r-lg`}
+=======
+      className={`container text-1xl font-playfair font-bold bg-white bg-opacity-20 backdrop:blur-md text-green-900 w-64 h-full fixed top-0 left-0 transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        } transition-transform duration-200 ease-in-out shadow-lg z-40 rounded-r-lg`}
+>>>>>>> b476d4df241884b4bca59c7038a851744388bef3
       onClick={(e) => e.stopPropagation()} // Prevent clicks inside the sidebar from closing it
     >
       <nav className="mt-12">
@@ -51,12 +56,13 @@ const Sidebar = ({ isOpen }) => {
         <Link to="/Help" className="block py-5 pl-2 px-10 rounded text-center transition duration-200 hover:bg-secondary-light">
           Help
         </Link>
-        <div className=" py-[50vh] pl-[7vh] items-center bottom-1 justify-center">
+        </nav>
+        <div className="block py-[20vh] pl-[6vh] rounded text-center items-center">
 
-          <ul className=''>
+          <ul>
 
             <li>
-              <label className="flex cursor-pointer gap-2">
+              <label className="flex cursor-pointer gap-2 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -92,7 +98,7 @@ const Sidebar = ({ isOpen }) => {
 
 
         </div>
-      </nav >
+      
     </div>
   );
 };

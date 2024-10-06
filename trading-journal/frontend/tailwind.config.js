@@ -18,6 +18,13 @@ module.exports = {
           lighter: 'rgb(155, 236, 0)',
           lightest: 'rgb(243, 255, 144)',
         },
+        screens: {
+          'sm': '640px',
+          'md': '768px',
+          'lg': '1024px',
+          'xl': '1280px',
+          '2xl': '1536px',
+        },
       },
       // backgroundImage: theme => ({
       //   'primary-gradient': 'linear-gradient(to bottom, #059212, #F3FF90)',
