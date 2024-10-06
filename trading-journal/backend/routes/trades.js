@@ -25,7 +25,7 @@ router.post('/', auth, async (req, res) => {
 
     const trade = await newTrade.save();
     res.json(trade);
-    console.log(req.user.id)
+    // (req.user.id)
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

@@ -5,23 +5,17 @@ const cors = require('cors');
 require('dotenv').config(); // Load environment variables
 const authRoutes = require('./routes/auth');
 const tradeRoutes = require('./routes/trades');
-const passport = require('passport');
+
 
 const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: 'https://xkirit.github.io',
+  origin: 'http://localhost:3000',
   credentials: true,
 }));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://xkirit.github.io');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  next();
-});
 
 // Routes
 app.use('/api/auth', authRoutes); // Auth routes

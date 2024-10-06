@@ -12,25 +12,25 @@ async function testLogin(username, password) {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('MongoDB connected');
+    // ('MongoDB connected');
 
     // Find the user
     const user = await User.findOne({ username });
     if (!user) {
-      console.log('No record existed');
+      // ('No record existed');
       return;
     }else{
       await bcrypt.compare(password, user.password, (err, response)=>{
         if(err){
-        console.log('invalid password');
-      }console.log('Signed in');
-      console.log(user.password);
+        // ('invalid password');
+      }// ('Signed in');
+      // (user.password);
       })};
     // Compare passwords
     // const isMatch = await bcrypt.compare(password, user.password);
     // if (!isMatch) {
-    //   console.log('Password is incorrect');
-    //   console.log(user.password);
+    //   // ('Password is incorrect');
+    //   // (user.password);
     //   return;
     // }
 
@@ -38,10 +38,10 @@ async function testLogin(username, password) {
     const payload = { user: { id: user.id } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
 
-    console.log('Login successful');
-    console.log('Generated JWT token:', token, user);
-    console.log('user',user.id);
-    console.log(user);
+    // ('Login successful');
+    // ('Generated JWT token:', token, user);
+    // ('user',user.id);
+    // (user);
 
     // Optionally, set up any additional checks or debug statements here
 

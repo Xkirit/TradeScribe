@@ -33,7 +33,9 @@ const TradeSchema = new mongoose.Schema({
   },
   notes: {
     type: String,
-  }
+  },
+  
+
 });
 
 module.exports = mongoose.model('Trade', TradeSchema);
