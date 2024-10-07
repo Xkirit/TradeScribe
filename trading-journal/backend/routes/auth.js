@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create new user
     user = new User({ username, email, password: hashedPassword });
@@ -44,18 +44,30 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
+    
 
     // Check if the user exists
     let user = await User.findOne({ username });
     if (!user) {
       return res.status(400).json({ msg: 'No user found with this username' });
     }
+    console.log('Stored password:', user.password);
+    console.log('Received password:', password);
 
-    // Check password
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ msg: 'Invalid password' });
-    }
+    // try {
+    //   const salt = await bcrypt.genSalt(10);
+    //   const hashedPassword = await bcrypt.hash(password, salt);
+    //   const isMatch = await bcrypt.compare(password, hashedPassword);
+    //   console.log(isMatch, hashedPassword, password, user.password) // Compare passwords
+      
+      
+      
+    //   // Continue if passwords match (e.g., generate JWT, send success response, etc.)
+      
+    // } catch (err) {
+    //   console.error('Error in password comparison:', err);
+    //   return res.status(500).json({ msg: 'Server error' });
+    // }
 
     // Create JWT token
     const payload = { user: { id: user.id } };
