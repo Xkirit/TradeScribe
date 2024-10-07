@@ -1,71 +1,56 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { AddIcon } from '@chakra-ui/icons';
+import { Toaster, toast } from 'react-hot-toast';
 
 const SignIn = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
+    console.log("entered")
     e.preventDefault();
-    console.log("entered");
 
     try {
-      const response = await fetch('https://tradescribe-1.onrender.com/api/auth/login', {  // Change to login endpoint
+      const response = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),  // Remove email field here
+        body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
-      if (data.token) {
+      console.log(data)
+
+      if (response.ok) { // Check if the response is okay
         login(data.token); // Set authentication context
-        navigate('/trades'); // Redirect to trades page
+        navigate('/trades', { state: { loginSuccess: true } });// Redirect to trades page
+        
       } else {
-        console.error('Login failed:', data.message);
+        setError(data.message || 'Login failed. Please check your credentials.');
+        console.log(error)
+        toast.error("login error")
       }
     } catch (err) {
       console.error('Error during sign-in:', err);
+      setError('Error connecting to the server');
     }
   };
 
   return (
-<<<<<<< HEAD
     <div className="relative flex items-center py-10 justify-center min-h-screen bg-secondary-gradient text-primary font-playfair">
-      <button className='absolute top-10 pr-4 text-center right-10 font-bold  hover:bg-primary text-green-900 subs py-1 px-3 rounded-lg text-md btn glass'>
-      <Link
-        to="/"
-      >
-        Home
-      </Link>
+      <div><Toaster/></div>
+      <button className='absolute top-10 pr-4 text-center right-10 font-bold hover:bg-primary text-green-900 subs py-1 px-3 rounded-lg text-md btn glass'>
+        <Link to="/">Home</Link>
       </button>
-=======
-    <div className="relative flex items-center text-center py-10 justify-center min-h-screen bg-secondary-gradient text-primary font-playfair">
-      {/* Top-Right Button */}
-      <div className=' flex gap-6 top-10 right-10 absolute sm:hidden bg-none '>
-        <button className="btn border-none bg-primary opacity-70 text-white hidden lg:block hover:bg-green-900">
-          <Link to="/">Home</Link>
-        </button>
-     
-      <div className="">
-        <button className="btn border-none bg-primary opacity-70 text-white hidden lg:block hover:bg-primary">
-          <Link to="/">About</Link>
-        </button>
-      </div>
-      </div>
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
 
-      {/* Dropdown Button for Small Screens */}
       <div className="dropdown dropdown-end t lg:hidden absolute top-10 right-10">
-        <div tabIndex={0} role="button" className="btn glass text-black bg-white opacity-20 m-1"><AddIcon /></div>
         <ul tabIndex={0} className="dropdown-content menu border-green-900 bg-gray-300 opacity-20 rounded-box z-[1] w-52 p-2 shadow">
           <li><Link to="/">Home</Link></li>
-          <li><a>About</a></li>
         </ul>
       </div>
 
@@ -73,7 +58,7 @@ const SignIn = () => {
       <div className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-md w-full max-w-xs">
         <h2 className="text-lg font-bold mb-4 text-center">Sign In</h2>
 
-        <form>
+        <form onSubmit={handleSubmit}> {/* Use onSubmit to handle form submission */}
           <div className="mb-3">
             <label className="block text-xs font-medium mb-1 text-left">Username</label>
             <input
@@ -83,6 +68,7 @@ const SignIn = () => {
               className="w-full px-2 py-1 bg-white bg-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary backdrop-blur-sm text-sm"
               placeholder="Enter your username"
               autoComplete='current-username'
+              required // Add required attribute for better user experience
             />
           </div>
 
@@ -95,24 +81,20 @@ const SignIn = () => {
               className="w-full px-2 py-1 bg-white bg-opacity-20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary backdrop-blur-sm text-sm"
               placeholder="Enter your password"
               autoComplete="current-password"
+              required // Add required attribute for better user experience
             />
           </div>
-<<<<<<< HEAD
           
+          {error && <p className="text-red-500 text-sm mt-2">{error}</p>} {/* Display error message */}
+
           <div className='py-2'>
             <button
-              onClick={handleSubmit}
+              onClick={handleSubmit} // Change to type="submit" for better form handling
               className="w-full btn-glass bg-primary text-white py-1 rounded-lg hover:bg-primary-light focus:outline-none focus:ring-2 focus:ring-primary-dark text-sm btn-sm glass"
             >
               Sign In
             </button>
           </div>
-=======
-
-          <button onClick={handleSubmit} className="btn glass w-full bg-primary text-sm hover:bg-primary-light p-1 mt-3 size-1 btn-sm text-white">
-            Submit
-          </button>
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
         </form>
 
         <div className="mt-4 text-center">

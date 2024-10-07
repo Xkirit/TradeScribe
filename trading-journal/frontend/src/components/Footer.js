@@ -2,14 +2,9 @@ import React from 'react';
 
 function Footer() {
   return (
-<<<<<<< HEAD
     <div>
       <footer className="footer grid grid-cols-2 gap-10 z-50 justify-items-center bg-green-950 w-full text-base-content p-10 ">
-=======
-    <footer className="bg-green-950 text-base-content p-10">
-      <div className="grid lg:grid-cols-4 grid-cols-2 sm:text-sm md:text-md gap-5">
-        {/* Services */}
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
+        
         <nav>
           <h6 className="footer-title text-lg sm:text-md font-bold mb-4">Services</h6>
           <a className="link link-hover block mb-2">Branding</a>
@@ -54,8 +49,9 @@ function Footer() {
             </div>
           </fieldset>
         </div>
+      </footer>
       </div>
-    </footer>
+   
   );
 }
 

@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-=======
-import { AddIcon } from "@chakra-ui/icons";
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -38,11 +34,7 @@ const SignUp = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await fetch(
-<<<<<<< HEAD
           "http://localhost:5000/api/auth/register",
-=======
-          "https://tradescribe-1.onrender.com/api/auth/register",
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
           {
             method: "POST",
             headers: {
@@ -87,14 +79,13 @@ const SignUp = () => {
 
       {/* Dropdown Button for Small Screens */}
       <div className="dropdown dropdown-end t lg:hidden absolute top-10 right-10">
-        <div tabIndex={0} role="button" className="btn glass text-black bg-white opacity-20 m-1"><AddIcon /></div>
+        <div tabIndex={0} role="button" className="btn glass text-black bg-white opacity-20 m-1">addicon</div>
         <ul tabIndex={0} className="dropdown-content menu border-green-900 bg-gray-300 opacity-20 rounded-box z-[1] w-52 p-2 shadow">
           <li><Link to="/">Home</Link></li>
           <li><a>About</a></li>
         </ul>
       </div>
       <div className="w-full max-w-md p-8 bg-none rounded-lg shadow-lg">
-<<<<<<< HEAD
         <h2 className="text-2xl font-semibold mb-6 text-green-900 subs">
           Sign Up
         </h2>
@@ -103,16 +94,6 @@ const SignUp = () => {
             <label
               htmlFor="username"
               className="block text-sm font-medium  text-gray-400"
-=======
-        <h2 className="text-2xl font-semibold mb-6 text-primary subs">
-          Sign Up
-        </h2>
-        <form >
-          <div className="mb-4">
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium  text-primary subs"
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
             >
               Username
             </label>
@@ -132,11 +113,7 @@ const SignUp = () => {
           <div className="mb-4">
             <label
               htmlFor="email"
-<<<<<<< HEAD
               className="block text-sm font-medium text-gray-400
-=======
-              className="block text-sm font-medium text-primary
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
 
 "
             >
@@ -159,11 +136,7 @@ const SignUp = () => {
           <div className="mb-4">
             <label
               htmlFor="password"
-<<<<<<< HEAD
               className="block text-sm font-medium text-gray-400"
-=======
-              className="block text-sm font-medium text-primary subs"
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
             >
               Password
             </label>
@@ -183,11 +156,7 @@ const SignUp = () => {
           <div className="mb-4">
             <label
               htmlFor="confirmPassword"
-<<<<<<< HEAD
               className="block text-sm font-medium text-gray-400
-=======
-              className="block text-sm font-medium text-primary subs
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
 
 "
             >
@@ -214,11 +183,7 @@ const SignUp = () => {
 
           <button
             onClick={handleSubmit}
-<<<<<<< HEAD
             className="w-full py-2 px-4 bg-primary text-white rounded-lg shadow-md hover:bg-primary-light btn-md glass "
-=======
-            className="w-full py-2 px-4 btn glass  bg-primary-light text-white subs rounded-lg shadow-md hover:bg-primary"
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
           >
             Sign Up
           </button>
@@ -227,11 +192,7 @@ const SignUp = () => {
           Already have an account?{" "}
           <Link
             to="/signin"
-<<<<<<< HEAD
             className="text-primary font-bold text-sm hover:underline"
-=======
-            className="text-primary  font-bold text-sm hover:underline"
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
           >
             Sign in
           </Link>

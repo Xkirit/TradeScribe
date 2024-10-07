@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useContext, useMemo, Suspense } from 'react';
+import React, { useState, useEffect, useContext, } from 'react';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { AuthContext } from '../context/AuthContext';
-
+import toast, { Toaster } from 'react-hot-toast';
+import { useLocation, useNavigate } from 'react-router-dom';
 const Trades = () => {
   const { auth } = useContext(AuthContext);
   const [trades, setTrades] = useState([]);
@@ -15,7 +16,16 @@ const Trades = () => {
     notes: ''
   });
 
-  useMemo(() => {
+  const location = useLocation();
+  const navigate= useNavigate();
+  const [toastShown, setToastShown] = useState(false); // Flag to prevent double toast
+
+
+  useEffect(() => {
+
+    
+  
+    
     const fetchTrades = async () => {
       try {
         const token = auth.token;
@@ -24,7 +34,7 @@ const Trades = () => {
           throw new Error('No token found');
         }
 
-        const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
+        const response = await fetch('http://localhost:5000/api/trades', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -38,14 +48,30 @@ const Trades = () => {
 
         const data = await response.json();
         setTrades(data);
+        console.log(data)
       } catch (error) {
         console.error('Error fetching trades:', error.message);
       }
     };
 
-    fetchTrades();
-  }, [auth.token]);
+    
 
+    fetchTrades();
+  } ,  [auth.token] );
+
+
+  useEffect(()=>{
+
+
+    if (!toastShown && location.state?.loginSuccess) { // Show toast only once
+      toast.success("logged in!"); 
+      setToastShown(true); // Set flag to prevent repeat toasts
+
+      // Replace the state after showing the toast to prevent future toasts
+      navigate(location.pathname, { replace: true });
+    }
+
+  },[location, navigate, toastShown])
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTrade({
@@ -58,9 +84,10 @@ const Trades = () => {
     e.preventDefault();
     const { entry, exit, quantity } = trade;
     const pnl = calculatePnL(entry, exit, quantity);
+    
 
     try {
-      const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
+      const response = await fetch('http://localhost:5000/api/trades', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -70,8 +97,12 @@ const Trades = () => {
       });
 
       if (!response.ok) {
+        toast.error('Failed to add trade')
+
         throw new Error('Failed to add trade');
       }
+
+      toast.success("Trade Added");
 
       const data = await response.json();
       setTrades([...trades, data]);
@@ -92,12 +123,13 @@ const Trades = () => {
 
   const calculatePnL = (entry, exit, quantity) => {
     if (!quantity || !entry || !exit) return '';
-    return (exit - entry) * quantity;
+    const pnl= ((exit - entry) * quantity);
+    return parseFloat(pnl.toFixed(2));
   };
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`https://tradescribe-1.onrender.com/api/trades/${id}`, {
+      await fetch(`http://localhost:5000/api/trades/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${auth.token}` // Add token to headers
@@ -105,14 +137,23 @@ const Trades = () => {
       });
 
       setTrades(trades.filter(trade => trade._id !== id));
+      toast.error("Trade deleted")
     } catch (err) {
       console.error('Error deleting trade:', err);
     }
   };
 
   return (
-<<<<<<< HEAD
+
     <div className="py-12 mt-7 w-full max-w-max mx-5 font-poppins">
+      <div><Toaster toastOptions={{
+        success: {
+          iconTheme: {
+            primary: 'green',
+            secondary: 'white',
+          },
+        },
+      }} /></div>
       <h1 className="text-3xl font-bold mb-4 text-green-900 font-playfair">Trade Tracker</h1>
 
       <form
@@ -120,13 +161,6 @@ const Trades = () => {
         className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg w-full"
       >
         <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-4 mx-auto">
-=======
-    <>
-      <h1 className="text-3xl font-bold mb-4 text-green-900 pt-12">Trade Tracker</h1>
-
-      <form className="bg-white bg-opacity-20 backdrop-blur-md p-4 rounded-lg shadow-lg max-w-[90vh] mx-auto py-12 mt-4 ">
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-4">
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1 subs">Asset</label>
             <input
@@ -200,27 +234,17 @@ const Trades = () => {
 
           <button
             onClick={handleSubmit}
-<<<<<<< HEAD
             className="w-full bg-primary-light button hover text-white py-2 rounded-lg hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary-dark col-span-2"
-=======
-            className="w-full bg-primary-light text-white py-2 rounded-lg hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary-dark col-span-2"
-
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
           >
             Add Trade
           </button>
         </div>
       </form>
 
-<<<<<<< HEAD
       <div className="mt-6">
         <h2 className="text-2xl font-bold mb-4">Trades List</h2>
 
         <table className="w-full bg-white bg-opacity-20 backdrop-blur-md rounded-lg shadow-md text-center subs">
-=======
-      <div className="mt-6 mx-auto">
-        <table className="  max-w-[90vh] mx-auto sm:text-lg mt-4  gap-6 container flex sm:w-screen-sm overflow-clip bg-white bg-opacity-20 backdrop-blur-md rounded-lg shadow-md text-center ">
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
           <thead>
             <tr>
               <th className="p-2">Asset</th>
@@ -255,9 +279,10 @@ const Trades = () => {
             ))}
           </tbody>
         </table>
+
       </div>
-    </>
+    </div>
   );
 };
 
-export default Trades;
+export default Trades

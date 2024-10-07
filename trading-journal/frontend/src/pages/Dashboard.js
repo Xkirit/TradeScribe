@@ -31,7 +31,7 @@ const Dashboard = () => {
 
     const fetchTrades = async () => {
         try {
-            const response = await fetch('https://tradescribe-1.onrender.com/api/trades', {
+            const response = await fetch('https://localhost:5000/api/trades', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -132,40 +132,23 @@ const Dashboard = () => {
     };
 
     return (
-<<<<<<< HEAD
         <div className="dashboard flex flex-col h-full w-auto px-10 py-[10vh] font-poppins">
             <h1 className="text-3xl font-bold mb-4 text-center text-green-900 font-playfair">Dashboard</h1>
 
             {!isBalanceSet ? (
                 <div className="mb-6 justify center">
                     <form onSubmit={handleSubmit} className='gap-4'>
-=======
-        <div className="dashboard flex flex-col h-full w-screen px-10 py-[10vh]">
-            <h1 className="text-3xl font-bold mb-4 text-center text-green-900">Dashboard</h1>
-
-            {!isBalanceSet ? (
-                <div className="mb-6 text-center gap-3">
-                    <form onSubmit={handleSubmit} className=''>
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
                         <label className="block text-lg font-medium mb-2">Initial Balance:</label>
                         <input
                             type="number"
                             value={initialBalance}
                             onChange={handleInitialBalanceChange}
-<<<<<<< HEAD
                             className="w-max px-3 py-2  border bg-white/50 border-gray-300 rounded-lg justify-between"
-=======
-                            className="w-max px-3 py-2 border border-gray-300 rounded-lg bg-white bg-opacity-20"
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
                             placeholder="Enter your initial balance"
                         />
                         <button
                             onClick={handleSubmit}
-<<<<<<< HEAD
                             className="mt-2 bg-primary mx-4 text-white py-2 px-4 rounded-lg"
-=======
-                            className="mt-2 mx-3 bg-primary text-white py-2 px-4 rounded-lg"
->>>>>>> b476d4df241884b4bca59c7038a851744388bef3
                         >
                             Set Initial Balance
                         </button>
