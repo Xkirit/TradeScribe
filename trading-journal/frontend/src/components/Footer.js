@@ -7,27 +7,27 @@ function Footer() {
         
         <nav>
           <h6 className="footer-title text-lg sm:text-md font-bold mb-4">Services</h6>
-          <a className="link link-hover block mb-2">Branding</a>
-          <a className="link link-hover block mb-2">Design</a>
-          <a className="link link-hover block mb-2">Marketing</a>
-          <a className="link link-hover block mb-2">Advertisement</a>
+          <a className="link link-hover block mb-2" href="#branding">Branding</a>
+          <a className="link link-hover block mb-2" href="#design">Design</a>
+          <a className="link link-hover block mb-2" href="#marketing">Marketing</a>
+          <a className="link link-hover block mb-2" href='#advertising'>Advertisement</a>
         </nav>
 
         {/* Company */}
         <nav>
           <h6 className="footer-title text-lg font-bold mb-4">Company</h6>
-          <a className="link link-hover block mb-2">About us</a>
-          <a className="link link-hover block mb-2">Contact</a>
-          <a className="link link-hover block mb-2">Jobs</a>
-          <a className="link link-hover block mb-2">Press kit</a>
+          <a className="link link-hover block mb-2" href='/About us'>About us</a>
+          <a className="link link-hover block mb-2" href='/Contact'>Contact</a>
+          <a className="link link-hover block mb-2" href='/Jobs'>Jobs</a>
+          <a className="link link-hover block mb-2" href='/Press-kit'>Press kit</a>
         </nav>
 
         {/* Legal */}
         <nav>
           <h6 className="footer-title text-lg font-bold mb-4">Legal</h6>
-          <a className="link link-hover block mb-2">Terms of use</a>
-          <a className="link link-hover block mb-2">Privacy policy</a>
-          <a className="link link-hover block mb-2">Cookie policy</a>
+          <a className="link link-hover block mb-2" href='/termsofuse'>Terms of use</a>
+          <a className="link link-hover block mb-2" href='/Privacy'>Privacy policy</a>
+          <a className="link link-hover block mb-2" href='/termsofuse'>Cookie policy</a>
         </nav>
 
         {/* Newsletter */}

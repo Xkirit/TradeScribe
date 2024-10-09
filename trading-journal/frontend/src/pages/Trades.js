@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext, } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { AuthContext } from '../context/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
+
 const Trades = () => {
   const { auth } = useContext(AuthContext);
   const [trades, setTrades] = useState([]);
@@ -17,15 +18,10 @@ const Trades = () => {
   });
 
   const location = useLocation();
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const [toastShown, setToastShown] = useState(false); // Flag to prevent double toast
 
-
   useEffect(() => {
-
-    
-  
-    
     const fetchTrades = async () => {
       try {
         const token = auth.token;
@@ -42,8 +38,8 @@ const Trades = () => {
           },
         });
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch trades');
+        if (!response.ok){
+          throw new Error('failed to fetch trades')
         }
 
         const data = await response.json();
@@ -54,24 +50,19 @@ const Trades = () => {
       }
     };
 
-    
-
     fetchTrades();
-  } ,  [auth.token] );
+  }, [auth.token]);
 
-
-  useEffect(()=>{
-
-
+  useEffect(() => {
     if (!toastShown && location.state?.loginSuccess) { // Show toast only once
-      toast.success("logged in!"); 
+      toast.success("logged in!");
       setToastShown(true); // Set flag to prevent repeat toasts
 
       // Replace the state after showing the toast to prevent future toasts
       navigate(location.pathname, { replace: true });
     }
+  }, [location, navigate, toastShown]);
 
-  },[location, navigate, toastShown])
   const handleChange = (e) => {
     const { name, value } = e.target;
     setTrade({

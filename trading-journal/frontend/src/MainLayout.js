@@ -16,12 +16,14 @@ const MainLayout = () => {
 
   useEffect(() => {
     if (DarkMode) {
+      SetDarkMode(true)
       document.body.classList.add('darkMode');
 
       // ('darkmode: on',DarkMode);
     }
     else {
       document.body.classList.remove('darkMode');
+      SetDarkMode(false)
       // ("darkMode: off");
 
     } localStorage.setItem('mode', DarkMode);

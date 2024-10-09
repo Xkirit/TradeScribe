@@ -11,7 +11,7 @@ function Testimonials() {
             </div>
           </div>
 
-          <div class="grid grid-cols-6 gap-6 text-center pt-12 lg:pt-6">
+          <div class="grid grid-cols-6 gap-6 text-center pt-12 lg:pt-6 font-poppins">
             <div class="col-span-6 md:col-span-3 lg:col-span-2 hover: hover:scale-105 transition-transform">
               <div class="bg-white shadow-xl bg-opacity-20 backdrop:blur-md rounded-2xl transition duration-300 h-full p-6 flex flex-col items-center justify-center text-center">
                 <img
@@ -36,7 +36,7 @@ function Testimonials() {
                 </div>
               </div>
             </div>
-            <div class="col-span-6 md:col-span-3 lg:col-span-2">
+            <div class="col-span-6 md:col-span-3 lg:col-span-2 hover: hover:scale-105 transition-transform">
               <div class="bg-white shadow-xl bg-opacity-20 backdrop:blur-md rounded-2xl  duration-300 h-full p-6 flex flex-col items-center justify-center text-center hover:scale-105 transition-transform">
                 <img
                   src="https://cdn.easyfrontend.com/pictures/users/user8.jpg"
