@@ -82,7 +82,7 @@ const SignUp = () => {
         <div tabIndex={0} role="button" className="btn glass text-black bg-white opacity-20 m-1">addicon</div>
         <ul tabIndex={0} className="dropdown-content menu border-green-900 bg-gray-300 opacity-20 rounded-box z-[1] w-52 p-2 shadow">
           <li><Link to="/">Home</Link></li>
-          <li><a>About</a></li>
+          <li><a href="/About">About</a></li>
         </ul>
       </div>
       <div className="w-full max-w-md p-8 bg-none rounded-lg shadow-lg">
