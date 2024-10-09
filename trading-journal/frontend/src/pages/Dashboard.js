@@ -13,7 +13,38 @@ const Dashboard = () => {
     const [isBalanceSet, setIsBalanceSet] = useState(false);
     const [dateLabels, setDateLabels] = useState([]);
 
+   
+    
+
     useEffect(() => {
+        const fetchTrades = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/trades', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${auth.token}`,
+                    },
+                });
+    
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+    
+                const data = await response.json();
+                setEquityData(data);
+    
+                if (isBalanceSet && initialBalance) {
+                    const curveAndLabels = calculateEquityCurveAndLabels(data, parseFloat(initialBalance));
+                    setEquityCurve(curveAndLabels.curve);
+                    setDateLabels(curveAndLabels.labels);
+                    localStorage.setItem('equityCurve', JSON.stringify(curveAndLabels.curve));
+                    localStorage.setItem('dateLabels', JSON.stringify(curveAndLabels.labels));
+                }
+            } catch (error) {
+                console.error('Error fetching trades:', error);
+            }
+        };
         const savedBalanceSet = localStorage.getItem('balanceSet') === 'true';
         const savedInitialBalance = localStorage.getItem('initialBalance');
         const savedEquityCurve = JSON.parse(localStorage.getItem('equityCurve'));
@@ -29,36 +60,7 @@ const Dashboard = () => {
         if (auth.token) {
             fetchTrades();
         }
-    }, [auth.token]);
-
-    const fetchTrades = async () => {
-        try {
-            const response = await fetch('http://localhost:5000/api/trades', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${auth.token}`,
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            setEquityData(data);
-
-            if (isBalanceSet && initialBalance) {
-                const curveAndLabels = calculateEquityCurveAndLabels(data, parseFloat(initialBalance));
-                setEquityCurve(curveAndLabels.curve);
-                setDateLabels(curveAndLabels.labels);
-                localStorage.setItem('equityCurve', JSON.stringify(curveAndLabels.curve));
-                localStorage.setItem('dateLabels', JSON.stringify(curveAndLabels.labels));
-            }
-        } catch (error) {
-            console.error('Error fetching trades:', error);
-        }
-    };
+    }, [auth.token, initialBalance, isBalanceSet]);
 
     const calculateEquityCurveAndLabels = (trades, balance) => {
         if (!Array.isArray(trades) || trades.length === 0) {

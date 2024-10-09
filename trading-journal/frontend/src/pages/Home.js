@@ -9,7 +9,7 @@ import Testimonials from "../components/Testimonials";
 const Home = () => {
   const texts = ["Journal your ", "Track your ", "Analyze your "];
   const displayText = useTypingEffect(texts);
-  const { auth, logout } = useAuth();
+  const [auth] = useAuth();
 
   return (
     <div className="flex flex-col items-center justify-center h-max bg-none min-w-max mx-4 select-none ">

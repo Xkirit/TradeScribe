@@ -1,5 +1,4 @@
 import React from 'react'
-import { Marquee } from "@devnomic/marquee";
 import "@devnomic/marquee/dist/index.css";
 function Testimonials() {
   return (
